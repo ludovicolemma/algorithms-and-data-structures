@@ -1,5 +1,7 @@
 # Algorithms and Data Structures (for Data Science)
 
+This is a privately forked repository of the course I attended, the original repo can be found [HERE](https://github.com/rossanoventurini/adsds)!
+
 * Teacher: [Rossano Venturini](http://pages.di.unipi.it/rossano)
 * CFU: 9
 * Period: Second semester
