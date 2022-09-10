@@ -49,9 +49,7 @@ def MergeSort(A):
 	
 	def divide_merge(A, l, r):
 		if l < r:
-			#(l+r)//2, but avoids overflow for large l and h 
 			m = (l+(r-1))//2
-			# Sort first and second halves
 			divide_merge(A, l, m)
 			divide_merge(A, m+1, r)
 			merge(A, l, m, r)
@@ -82,6 +80,26 @@ def QuickSort(A):
 	part_sort(A, 0, len(A)-1)
 	return A
 
+def CountingSort(A):
+	B = [0] * len(A)
+	C = [0] * (max(A)+1)
+	for i in range(0, len(A)):
+		C[A[i]] += 1
+	for i in range(1, len(C)):
+		C[i] += C[i - 1] #cumulating count to get the index of next el
+	
+	while A:
+		last = A.pop() #extracting the last element of A
+		index = C[last]-1 #getting the index to insert it sorted
+		B[index] = last #putting the element of A at the index
+		C[last] -= 1 #reducing the count referred to that element
+	#interesting: at the end C will have the index of the position of el it counted
+	for sorted_el in B:
+		A.append(sorted_el) #repopulating A
+	return A
+	
+
+# SORTING APPLICATION
 def QuickSelect(A, k):
 	def part_select(A, i, low, high):
 		if low == high: #if the remaining element is 1 just return it
